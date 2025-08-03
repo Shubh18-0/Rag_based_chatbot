@@ -15,7 +15,7 @@ from langchain.chains.history_aware_retriever import create_history_aware_retrie
 from langchain_pinecone import PineconeVectorStore
 
 def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
-    # ✅ Create unique namespace per session
+
     if session_id is None:
         session_id = generate_unique_sessionID()
     namespace = session_id
@@ -26,16 +26,16 @@ def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
 
     model_instance = llm()
 
-    # ✅ Split documents
+ 
     doc_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=70)
     splitted_documents = doc_splitter.split_documents(documents)
     texts = [doc.page_content for doc in splitted_documents]
 
-    # ✅ Create BM25 sparse encoder
+
     bm25_encoder = BM25Encoder()
     bm25_encoder_final = bm25_encoder.fit(texts)
 
-    # ✅ Store in Pinecone with namespace
+    
     embeddings_model = create_embeddings()
     PineconeVectorStore.from_documents(
         documents=splitted_documents,
@@ -44,7 +44,7 @@ def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
         namespace=namespace
     )
 
-    # ✅ Hybrid retriever restricted to namespace
+
     index = vector_store_index(index_name=index_name)
     hybrid_retriever = PineconeHybridSearchRetriever(
         embeddings=embeddings_model,
