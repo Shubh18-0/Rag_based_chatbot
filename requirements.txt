@@ -1,0 +1,17 @@
+streamlit
+redis
+python-dotenv
+langchain
+langchain-huggingface
+langchain-community
+pinecone-text
+pinecone-client==3.2.2
+langchain-core
+huggingface-hub
+langchain-groq
+langchain_pinecone
+requests
+beautifulsoup4
+pypdf
+transformers
+# langsmith  for ref
