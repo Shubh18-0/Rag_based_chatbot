@@ -27,10 +27,10 @@ Usage,Performance and Testing:
 
 -The bot perfomed well with the Usage part and was able to retain context as well. Here is a sample screenshot below where i chatted in direct mode and rag mode with the bot and for both it was able to perfom as expected with history retained in memory and context as well.
 Direct mode screenshot-![alt text](image-6.png)
-Rag mode screenshot-
 
 -Overall for both the modes the bot performed quite well with max query latency score of 99ms fluctuated till 50ms as well and throughout the session it stayed even lower closer to 10. Below are the screenshots of same via pinecone vector store platform.
 ![alt text](image-1.png)
+
 
 -Testing
 Throughout the development - i personally kept testing the bot specially after the UI was created using streamlit to see if it works upto the expectations or not .
@@ -55,6 +55,7 @@ Thanks for reading !!!
 
 Extras:
 redis server used - ![alt text](image-8.png)
+
 
 
 
