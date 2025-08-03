@@ -1,6 +1,6 @@
 from langchain.document_loaders import PyPDFLoader,WebBaseLoader,TextLoader
 from langchain.schema import Document
-import docx   # ✅ Added for Word file support
+import docx 
 
 def load_user_documents(sources):
     documents=[]
@@ -19,13 +19,12 @@ def load_user_documents(sources):
                 load_text=TextLoader(src)
                 documents.extend(load_text.load())
 
-            elif src.lower().endswith('.docx'):  # ✅ Added Word file support
+            elif src.lower().endswith('.docx'): 
                 word_doc = docx.Document(src)
                 full_text = "\n".join([p.text for p in word_doc.paragraphs])
                 documents.append(Document(page_content=full_text, metadata={"source": src}))
 
             else:
-                # ✅ Wrap raw strings into Document to avoid AttributeError
                 documents.append(Document(page_content=str(src)))
 
         except Exception as e:
