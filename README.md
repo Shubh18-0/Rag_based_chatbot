@@ -35,8 +35,11 @@ Direct mode screenshot-![alt text](image-6.png)
 Throughout the development - i personally kept testing the bot specially after the UI was created using streamlit to see if it works upto the expectations or not .
 Below is the screenshot from Langsmith tracing where i have tried multiple prompts spanning across multiple sessions and tried different prompts or methods to find patterns where it fails to perform .
 Tracing all tests run count-![alt text](image-5.png)
+
 Tracing session ss:1-![alt text](image-2.png)
+
 Tracing session ss:2 ![alt text](image-3.png)
+
 Tracing session ss:3 ![alt text](image-4.png)
 
 #ChallengesFaced:
@@ -54,6 +57,7 @@ Thanks for reading !!!
 
 Extras:
 redis server used - ![alt text](image-8.png)
+
 
 
 
