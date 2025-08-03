@@ -6,6 +6,9 @@
 5. We have implemented multiple state sessions to work and store session histories and append messages throught the session of a user"""
 
 import streamlit as st
+import nltk
+nltk.download('punkt')
+nltk.download('punkt_tab')
 import time, uuid, os
 from utils.load_docs import load_user_documents
 from pipeline.session_history import generate_unique_sessionID
