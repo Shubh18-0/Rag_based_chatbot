@@ -1,4 +1,4 @@
-import utils
+# import utils
 from pipeline.embeddings import create_embeddings
 from pipeline.session_history import create_session_history, generate_unique_sessionID
 from pipeline.vector_store import vector_store_index
@@ -13,8 +13,8 @@ from langchain_core.runnables import RunnableWithMessageHistory
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains.retrieval import create_retrieval_chain
 from langchain.chains.history_aware_retriever import create_history_aware_retriever
-from langchain_pinecone import PineconeVectorStore
-import uuid
+# from langchain_pinecone import PineconeVectorStore
+# import uuid
 
 
 def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
@@ -37,7 +37,7 @@ def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
 
     embeddings_model = create_embeddings()
 
-    vector_db = PineconeVectorStore.from_documents(
+    vector_db = Pineconevectorstore.from_documents(
         documents=splitted_documents,
         embedding=embeddings_model,
         index_name=index_name,
