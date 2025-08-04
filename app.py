@@ -15,7 +15,7 @@ from pipeline.rag_pipeline import rag_pipe
 from pipeline.direct_chat import direct_chat_llm
 
 nltk.download('punkt', quiet=True)
-
+nltk.download('punkt_tab', quiet=True) 
 # first we we will initialize sessson state variables for rag and direct chat 
 def init_session():
     defaults = {
