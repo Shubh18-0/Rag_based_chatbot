@@ -3,7 +3,7 @@ from pipeline.llm_load import llm
 
 def direct_chat_llm():
     qa_prompt=ChatPromptTemplate.from_messages([
-        ('system',('you are a helpful and creative assistant. PLease answer to user queries based on the context provided without making it too long but creative and not cringe . Remember dont hallucinate -Refer context : {context}')),
+        ('system',('you are a helpful and creative assistant. PLease answer to user queries without making it too long but creative and not cringe . Remember dont hallucinate ')),
         MessagesPlaceholder('chat_history'),
         ('human','{input}')
     ])

@@ -1,3 +1,4 @@
+import utils
 from pipeline.embeddings import create_embeddings
 from pipeline.session_history import create_session_history, generate_unique_sessionID
 from pipeline.vector_store import vector_store_index
@@ -13,9 +14,10 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains.retrieval import create_retrieval_chain
 from langchain.chains.history_aware_retriever import create_history_aware_retriever
 from langchain_pinecone import PineconeVectorStore
+import uuid
+
 
 def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
-
     if session_id is None:
         session_id = generate_unique_sessionID()
     namespace = session_id
@@ -26,24 +28,20 @@ def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
 
     model_instance = llm()
 
- 
     doc_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=70)
     splitted_documents = doc_splitter.split_documents(documents)
+
     texts = [doc.page_content for doc in splitted_documents]
-
-
     bm25_encoder = BM25Encoder()
     bm25_encoder_final = bm25_encoder.fit(texts)
 
-    
     embeddings_model = create_embeddings()
-    PineconeVectorStore.from_documents(
+
+    vector_db = PineconeVectorStore.from_documents(
         documents=splitted_documents,
         embedding=embeddings_model,
         index_name=index_name,
-        namespace=namespace
-    )
-
+        namespace=namespace)
 
     index = vector_store_index(index_name=index_name)
     hybrid_retriever = PineconeHybridSearchRetriever(
@@ -51,26 +49,22 @@ def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
         sparse_encoder=bm25_encoder_final,
         index=index,
         text_key='text',
-        namespace=namespace
-    )
+        namespace=namespace)
 
     contextualized_q_prompt = ChatPromptTemplate.from_messages([
         ('system', 'Please rephrase user question into a standalone question using chat history :'),
         MessagesPlaceholder('chat_history'),
-        ('human', '{input}')
-    ])
+        ('human', '{input}')])
 
     historyawareretriever = create_history_aware_retriever(
         llm=model_instance,
         prompt=contextualized_q_prompt,
-        retriever=hybrid_retriever
-    )
+        retriever=hybrid_retriever)
 
     qa_prompt = ChatPromptTemplate.from_messages([
         ('system', "You are a helpful assistant! Please reply to user's query based on provided context: {context}"),
         MessagesPlaceholder('chat_history'),
-        ('human', '{input}')
-    ])
+        ('human', '{input}')])
 
     document_chain = create_stuff_documents_chain(llm=model_instance, prompt=qa_prompt)
     retrieval_chain = create_retrieval_chain(historyawareretriever, document_chain)
@@ -83,7 +77,6 @@ def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
         get_session_history_for_chain,
         input_messages_key='input',
         history_messages_key='chat_history',
-        output_messages_key='answer'
-    )
+        output_messages_key='answer')
 
     return conversational_rag_chain, session_id

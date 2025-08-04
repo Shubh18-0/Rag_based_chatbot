@@ -1,8 +1,6 @@
 from langchain_core.chat_history import InMemoryChatMessageHistory
 from langchain_core.messages import get_buffer_string
 from langchain_core.messages.utils import trim_messages
-
-# Dict initialized to Store all chat sessions
 session_store = {}
 
 def get_chat_history(session_id: str):
@@ -16,10 +14,10 @@ def generate_unique_sessionID():
 
 def create_session_history(session_id, token_counter):
     history = get_chat_history(session_id)
+
     def safe_token_counter(messages):
         from langchain_core.messages import BaseMessage
         if isinstance(messages, list):
-            # Convert list of messages to one string
             text = get_buffer_string(messages)
             return token_counter(text)
         elif isinstance(messages, BaseMessage):
