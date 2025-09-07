@@ -13,9 +13,6 @@ from langchain_core.runnables import RunnableWithMessageHistory
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains.retrieval import create_retrieval_chain
 from langchain.chains.history_aware_retriever import create_history_aware_retriever
-# from langchain_pinecone import PineconeVectorStore
-# import uuid
-
 
 def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
     if session_id is None:

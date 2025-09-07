@@ -2,7 +2,7 @@ import redis
 import hashlib ,json
 
 redis_server = redis.Redis.from_url(
-    "rediss://default:ARw1AAIjcDEzMTAyNTcxNTkzZTg0YzQ5OWQ3MGEzOTFhZDZiNWM1YnAxMA@closing-rattler-7221.upstash.io:6379",
+    "redis://default:ASLdAAImcDE5OTAxMjk5MjYzOGI0NTIwOWNlOWQ4YTVhNTQ3MzAyZnAxODkyNQ@massive-goat-8925.upstash.io:6379",
     decode_responses=True)
 
 def make_hash_key(text):
