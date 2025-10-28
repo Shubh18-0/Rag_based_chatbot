@@ -1,5 +1,5 @@
 from langchain_community.document_loaders import PyPDFLoader,WebBaseLoader,TextLoader
-from langchain.schema import Document
+from langchain_core.documents import Document
 import docx 
 
 def load_user_documents(sources):
