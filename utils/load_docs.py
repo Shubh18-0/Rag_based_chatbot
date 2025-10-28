@@ -1,4 +1,4 @@
-from langchain.document_loaders import PyPDFLoader,WebBaseLoader,TextLoader
+from langchain_community.document_loaders import PyPDFLoader,WebBaseLoader,TextLoader
 from langchain.schema import Document
 import docx 
 
