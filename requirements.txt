@@ -16,4 +16,5 @@ pypdf
 transformers
 python-docx
 sentence-transformers
+tiktoken
 # langsmith  for ref
