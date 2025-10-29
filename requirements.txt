@@ -1,25 +1,20 @@
 streamlit
 redis
 python-dotenv
-
-# --- LangChain ecosystem ---
-langchain==0.2.14
-langchain-core==0.2.38
-langchain-community==0.2.11
-langchain-huggingface==0.0.3
-langchain-groq==0.0.5
-langchain-pinecone==0.0.3
-
-# --- Vector DB + Models ---
+langchain
+langchain-huggingface
+langchain-community
+pinecone-text
 pinecone-client==3.2.2
-pinecone-text==0.9.0
-huggingface-hub==0.24.6
-transformers==4.44.2
-sentence-transformers==3.0.1
-tiktoken==0.7.0
-
-# --- Utilities ---
+langchain-core
+huggingface-hub
+langchain-groq
+langchain_pinecone
 requests
 beautifulsoup4
 pypdf
+transformers
 python-docx
+sentence-transformers
+tiktoken
+# langsmith  for ref
