@@ -10,7 +10,7 @@ from pinecone_text.sparse import BM25Encoder
 from langchain_community.vectorstores import Pinecone as Pineconevectorstore
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables import RunnableWithMessageHistory
-from langchain.chains.combine_documents.stuff import create_stuff_documents_chain
+from langchain.chains.combine_documents.stuff import StuffDocumentsChain
 from langchain.chains.retrieval import create_retrieval_chain
 from langchain.chains.history_aware_retriever import create_history_aware_retriever
 
@@ -63,7 +63,7 @@ def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
         MessagesPlaceholder('chat_history'),
         ('human', '{input}')])
 
-    document_chain = create_stuff_documents_chain(llm=model_instance, prompt=qa_prompt)
+    document_chain = StuffDocumentsChain(llm=model_instance, prompt=qa_prompt)
     retrieval_chain = create_retrieval_chain(historyawareretriever, document_chain)
 
     def get_session_history_for_chain(session_id: str):
