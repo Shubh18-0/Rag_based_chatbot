@@ -1,12 +1,12 @@
 streamlit
 redis
 python-dotenv
-langchain
+langchain==0.3.27
 langchain-huggingface
 langchain-community
 pinecone-text
 pinecone-client==3.2.2
-langchain-core
+langchain-core==0.3.27
 huggingface-hub
 langchain-groq
 langchain_pinecone
