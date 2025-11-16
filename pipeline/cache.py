@@ -1,10 +1,8 @@
 import redis, hashlib, json
 
 redis_server = redis.Redis.from_url(
-    "rediss://default:AR_uAAImcDI1OWY1MTFmMjJkMjE0Yjc2OTdhYmRjYmM3Y2E0YWE3Y3AyODE3NA@proper-foxhound-8174.upstash.io:6379",
-    decode_responses=True
-)
-
+    "rediss://default:ATdHAAIncDJiNDhhOGZmOWZlNmE0NWE1YWMyODc3OWFlMDU4MDI5NnAyMTQxNTE@cheerful-pigeon-14151.upstash.io:6379",
+    decode_responses=True)
 def make_hash_key(text):
     return hashlib.sha256(text.encode()).hexdigest()
 
