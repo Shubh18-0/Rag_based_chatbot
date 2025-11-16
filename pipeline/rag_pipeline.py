@@ -1,4 +1,4 @@
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 from langchain.chains import ConversationalRetrievalChain
 from pipeline.embeddings import create_embeddings
 from pipeline.session_history import generate_unique_sessionID
