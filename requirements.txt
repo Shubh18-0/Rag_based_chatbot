@@ -1,15 +1,15 @@
 streamlit
 redis
 python-dotenv
-langchain
+langchain==0.3.27
 langchain-huggingface
 langchain-community
 pinecone-text
-pinecone-client==3.2.2
+pinecone-client==2.3.1
 langchain-core
 huggingface-hub
 langchain-groq
-langchain_pinecone
+langchain-pinecone
 requests
 beautifulsoup4
 pypdf
@@ -17,4 +17,3 @@ transformers
 python-docx
 sentence-transformers
 tiktoken
-# langsmith  for ref
