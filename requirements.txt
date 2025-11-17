@@ -1,13 +1,13 @@
 # Streamlit + dependencies
 streamlit==1.30.0
-rich==14.2.0
+rich==13.4.2
 markdown-it-py==4.0.0
 mdurl==0.1.2
 pygments==2.19.2
 
 # NLP / Transformers
 nltk==3.8.1
-transformers==4.31.0
+transformers==4.30.2
 sentence-transformers==2.2.2
 tiktoken==0.4.0
 
@@ -18,7 +18,7 @@ requests==2.31.0
 beautifulsoup4==4.12.2
 
 # LangChain
-langchain==0.0.355
+langchain==0.0.350
 langchain-huggingface==0.3.3
 
 # Vector Stores / DB
