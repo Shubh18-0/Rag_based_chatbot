@@ -24,4 +24,4 @@ langchain-huggingface==0.3.1
 # Vector Stores / DB
 pinecone-client==3.2.2
 redis==6.2.0
-pinecone-text==0.0.1
+pinecone-text==0.7.2  # valid version
