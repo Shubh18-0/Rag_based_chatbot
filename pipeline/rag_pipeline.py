@@ -1,5 +1,5 @@
 from langchain.prompts import PromptTemplate
-from langchain_community.chains import ConversationalRetrievalChain
+from langchain.chains import conversational_retrieval
 from pipeline.embeddings import create_embeddings
 from pipeline.session_history import generate_unique_sessionID
 from pipeline.vector_store import vector_store_index
@@ -51,7 +51,7 @@ def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
         input_variables=["context", "question"]
     )
 
-    conversational_rag_chain = ConversationalRetrievalChain.from_llm(
+    conversational_rag_chain = conversational_retrieval.from_llm(
         llm=llm(),
         retriever=hybrid_retriever,
         condense_question_prompt=condense_prompt,
