@@ -1,6 +1,6 @@
 # Streamlit + dependencies
 streamlit==1.30.0
-rich<14  # Streamlit 1.30 requires rich<14
+rich<14
 markdown-it-py==4.0.0
 mdurl==0.1.2
 pygments==2.19.2
@@ -18,10 +18,13 @@ requests==2.31.0
 beautifulsoup4==4.12.2
 
 # LangChain
-langchain>=0.3.0,<0.4
+langchain==0.0.350
 langchain-huggingface==0.3.3
-langchain-community>=0.0.38,<0.1.0
+langchain-core==0.3.86
+
+langchain-community==0.0.150
 
 # Vector Stores / DB
 pinecone-client==3.2.2
+
 redis==6.2.0
