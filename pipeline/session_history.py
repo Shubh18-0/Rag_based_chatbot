@@ -1,6 +1,6 @@
 from langchain_core.chat_history import InMemoryChatMessageHistory
 from langchain_core.messages import get_buffer_string
-from langchain_core.messages.utils import trim_messages
+from langchain_core.messages.utils import get_buffer_string
 session_store = {}
 
 def get_chat_history(session_id: str):
@@ -25,7 +25,7 @@ def create_session_history(session_id, token_counter):
         else:
             return token_counter(str(messages))
 
-    trimmed_messages = trim_messages(
+    trimmed_messages = get_buffer_string(
         history.messages,
         token_counter=safe_token_counter,
         max_tokens=1000

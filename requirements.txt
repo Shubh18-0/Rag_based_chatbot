@@ -6,17 +6,13 @@ python-docx
 requests
 beautifulsoup4
 
-# RAG + Embeddings
 transformers==4.42.0
 sentence-transformers==2.2.2
 
-# Correct LangChain versions
 langchain==0.1.20
 langchain-core==0.1.52
 langchain-community==0.0.38
 
-
-# Pinecone latest stable ecosystem
 pinecone-client==3.2.2
 langchain-pinecone==0.0.3
 pinecone-text==0.5.0
