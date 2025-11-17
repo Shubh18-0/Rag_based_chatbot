@@ -13,7 +13,7 @@ sentence-transformers==2.2.2
 # Correct LangChain versions
 langchain==0.1.20
 langchain-core==0.1.52
-langchain-community==0.0.28
+langchain-community==0.0.40
 
 # Pinecone latest stable ecosystem
 pinecone-client==3.2.2
