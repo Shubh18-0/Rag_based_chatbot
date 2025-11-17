@@ -13,14 +13,14 @@ tiktoken==0.4.0
 
 # PDF / Doc / Web scraping
 pypdf==3.16.0
-python-docx==0.8.12
+python-docx==1.1.2
 requests==2.31.0
 beautifulsoup4==4.12.2
 
 # LangChain
 langchain==0.0.350
 langchain-core==0.3.86
-langchain-huggingface==0.3.3
+langchain-huggingface==1.0.1
 langchain-community==0.0.150
 
 # Vector Stores / DB
