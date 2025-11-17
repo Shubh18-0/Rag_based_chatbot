@@ -1,9 +1,15 @@
 streamlit==1.30.0
 nltk==3.8.1
-langchain==0.3.27
+
+# OLD working LangChain versions
+langchain==0.0.350
+langchain-core==0.0.20
+langchain-community==0.0.19
+
 pinecone-client==3.2.2
 langchain-pinecone==0.0.17
 pinecone-text==0.1.5
+
 requests
 beautifulsoup4
 pypdf
