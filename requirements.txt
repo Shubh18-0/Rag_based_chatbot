@@ -16,7 +16,6 @@ pypdf==3.16.0
 python-docx==1.1.2
 requests==2.31.0
 beautifulsoup4==4.12.2
-
 # LangChain
 langchain
 langchain-huggingface
@@ -25,3 +24,4 @@ langchain-community
 pinecone-client==3.2.2
 redis==6.2.0
 pinecone-text==0.7.2
+langchain-groq
