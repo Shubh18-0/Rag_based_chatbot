@@ -1,25 +1,21 @@
 streamlit==1.30.0
 nltk==3.8.1
-
-# LangChain Ecosystem (matching versions)
-langchain==0.3.27
-langchain-core==0.3.12
-langchain-community==0.3.16
-langchain-pinecone==0.2.3
-
-# Pinecone (latest compatible)
-pinecone-client==3.2.2
-pinecone-text==0.1.5
-
-# Embeddings & Transformers
-transformers==4.42.0
-sentence-transformers==2.2.2
 tiktoken
-
-# Document Loading
 pypdf
 python-docx
-
-# Web + Parser
 requests
 beautifulsoup4
+
+# RAG + Embeddings
+transformers==4.42.0
+sentence-transformers==2.2.2
+
+# Correct LangChain versions
+langchain==0.1.20
+langchain-core==0.1.52
+langchain-community==0.0.28
+
+# Pinecone latest stable ecosystem
+pinecone-client==3.2.2
+langchain-pinecone==0.0.3
+pinecone-text==0.5.0
