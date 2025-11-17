@@ -8,9 +8,8 @@ pygments==2.19.2
 # NLP / Transformers
 nltk==3.8.1
 transformers
-sentence-transformers==2.2.2
+sentence-transformers
 tiktoken==0.4.0
-
 # PDF / Doc / Web scraping
 pypdf==3.16.0
 python-docx==1.1.2
