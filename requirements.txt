@@ -20,7 +20,7 @@ langchain
 langchain-huggingface
 langchain-community
 # Vector Stores / DB
-pinecone-client==3.2.2
+pinecone-client==2.2.4
 redis==6.2.0
 pinecone-text==0.7.2
 langchain-groq
