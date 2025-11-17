@@ -1,20 +1,30 @@
+# Core
 streamlit==1.30.0
+rich==13.9.4
+markdown-it-py==4.0.0
+mdurl==0.1.2
+pygments==2.19.2
+
+# NLP / Transformers
 nltk==3.8.1
-tiktoken
-pypdf
-python-docx
-requests
-beautifulsoup4
-
-transformers==4.42.0
+transformers==4.30.2
 sentence-transformers==2.2.2
+tiktoken==0.4.0
 
-langchain==0.1.20
-langchain-core==0.1.52
-langchain-community==0.0.38
+# PDF / Doc / Web scraping
+pypdf==3.16.0
+python-docx==0.8.12
+requests==2.31.0
+beautifulsoup4==4.12.2
 
+# LangChain
+langchain==0.0.350
+langchain-core==0.3.86
+langchain-huggingface==0.3.3
+langchain-community==0.0.150
+
+# Vector Stores / DB
 pinecone-client==3.2.2
 langchain-pinecone==0.0.3
 pinecone-text==0.5.0
 redis==6.2.0
-langchain_huggingface
