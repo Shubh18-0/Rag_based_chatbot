@@ -18,8 +18,9 @@ requests==2.31.0
 beautifulsoup4==4.12.2
 
 # LangChain
-langchain>=0.3.0,<0.4  # HuggingFace embeddings are included here
-langchain-community>=0.0.38,<0.1.0  # pick latest available compatible version
+langchain>=0.3.0,<0.4
+langchain-huggingface==0.3.3
+langchain-community>=0.0.38,<0.1.0
 
 # Vector Stores / DB
 pinecone-client==3.2.2
