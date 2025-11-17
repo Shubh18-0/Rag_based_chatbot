@@ -19,8 +19,7 @@ beautifulsoup4==4.12.2
 
 # LangChain
 langchain==0.0.350
-langchain-huggingface==0.3.3
-
+langchain-huggingface==0.3.1
 # Vector Stores / DB
 pinecone-client==3.2.2
 redis==6.2.0
