@@ -1,19 +1,25 @@
+# Streamlit
 streamlit==1.30.0
+
+# NLP
 nltk==3.8.1
+tiktoken
+pypdf
+python-docx
+requests
+beautifulsoup4
 
-# OLD working LangChain versions
+# Embeddings + Transformers
+transformers==4.42.0
+sentence-transformers==2.2.2
+
+# --- LangChain (Old API, but stable and supports langchain.chains) ---
 langchain==0.0.350
-langchain-core==0.0.20
-langchain-community==0.0.19
 
+# Pinecone
 pinecone-client==3.2.2
 langchain-pinecone==0.0.17
 pinecone-text==0.1.5
 
-requests
-beautifulsoup4
-pypdf
-python-docx
-transformers==4.42.0
-sentence-transformers==2.2.2
-tiktoken
+# Env
+python-dotenv
