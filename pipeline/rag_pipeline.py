@@ -1,12 +1,12 @@
-from langchain_core.prompts import PromptTemplate
-from langchain.chains import ConversationalRetrievalChain
+from langchain.prompts import PromptTemplate
+from langchain_community.chains import ConversationalRetrievalChain
 from pipeline.embeddings import create_embeddings
 from pipeline.session_history import generate_unique_sessionID
 from pipeline.vector_store import vector_store_index
 from pipeline.llm_load import llm
 from utils.load_docs import load_user_documents
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_pinecone import PineconeVectorStore
+from langchain.vectorstores import Pinecone
 from pinecone_text.sparse import BM25Encoder
 
 def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
@@ -27,7 +27,7 @@ def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
 
     embeddings_model = create_embeddings()
 
-    vector_store = PineconeVectorStore.from_documents(
+    vector_store = Pinecone.from_documents(
         documents=splitted_documents,
         embedding=embeddings_model,
         index_name=index_name,
