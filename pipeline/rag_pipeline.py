@@ -1,18 +1,26 @@
+import os
 from langchain.prompts import PromptTemplate
-from langchain.chains import conversational_retrieval
+from langchain.chains import ConversationalRetrievalChain # <-- CHANGED IMPORT
 from pipeline.embeddings import create_embeddings
 from pipeline.session_history import generate_unique_sessionID
-from pipeline.vector_store import vector_store_index
+# from pipeline.vector_store import vector_store_index # REMOVED UNUSED IMPORT
 from pipeline.llm_load import llm
 from utils.load_docs import load_user_documents
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import Pinecone
+from langchain_pinecone import Pinecone
 from pinecone_text.sparse import BM25Encoder
+from pinecone import Pinecone as PineconeClient
 
 def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
     if session_id is None:
         session_id = generate_unique_sessionID()
     namespace = session_id
+
+    pc_api_key = os.environ.get("PINECONE_API_KEY")
+    if not pc_api_key:
+        raise ValueError("PINECONE_API_KEY environment variable not set.")
+    
+    pc = PineconeClient(api_key=pc_api_key)
 
     documents = load_user_documents(sources)
     if not documents:
@@ -51,7 +59,7 @@ def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
         input_variables=["context", "question"]
     )
 
-    conversational_rag_chain = conversational_retrieval.from_llm(
+    conversational_rag_chain = ConversationalRetrievalChain.from_llm(
         llm=llm(),
         retriever=hybrid_retriever,
         condense_question_prompt=condense_prompt,
