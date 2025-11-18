@@ -6,7 +6,7 @@ from pipeline.vector_store import vector_store_index
 from pipeline.llm_load import llm
 from utils.load_docs import load_user_documents
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import Pinecone
+from langchain_community.vectorstores import Pinecone
 from pinecone_text.sparse import BM25Encoder
 
 def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
