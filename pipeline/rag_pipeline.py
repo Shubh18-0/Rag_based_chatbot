@@ -7,6 +7,7 @@ from pipeline.llm_load import llm
 from utils.load_docs import load_user_documents
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_pinecone import PineconeVectorStore
+from langchain_pinecone import Pinecone
 from pinecone_text.sparse import BM25Encoder
 from pinecone import Pinecone as PineconeClient
 
