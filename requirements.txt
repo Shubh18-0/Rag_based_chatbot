@@ -25,3 +25,4 @@ redis==6.2.0
 pinecone-text==0.7.2
 langchain-groq
 python-dotenv
+langchain-community
