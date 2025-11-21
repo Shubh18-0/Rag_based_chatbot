@@ -12,7 +12,6 @@ python-docx==1.1.2
 requests==2.31.0
 beautifulsoup4==4.12.2
 langchain-core==0.1.51
-langchain-community==0.0.37
 
 langchain-huggingface==0.0.3
 langchain-pinecone==0.2.13
