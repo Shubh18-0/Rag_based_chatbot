@@ -1,13 +1,12 @@
 import os
 from langchain.prompts import PromptTemplate
-from langchain.chains import ConversationalRetrievalChain # <-- CHANGED IMPORT
+from langchain.chains import ConversationalRetrievalChain 
 from pipeline.embeddings import create_embeddings
 from pipeline.session_history import generate_unique_sessionID
-# from pipeline.vector_store import vector_store_index # REMOVED UNUSED IMPORT
 from pipeline.llm_load import llm
 from utils.load_docs import load_user_documents
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_pinecone import Pinecone
+from langchain_pinecone import PineconeVectorStore
 from pinecone_text.sparse import BM25Encoder
 from pinecone import Pinecone as PineconeClient
 
