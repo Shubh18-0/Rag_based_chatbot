@@ -1,10 +1,3 @@
-"""Main application file for chatbot. In this file we :
-1. Start by importing from various util files we prepared ,
-2. then importing necessary libraries to work with; and then,
-3. Implementing the structure for ui where users can chat with out chatbot application via Streamlit,
-4. The bot also provides user with different options whether to chat with documents vs without documents.
-5. We have implemented multiple state sessions to work and store session histories and append messages throught the session of a user"""
-
 import streamlit as st
 import nltk
 import time
@@ -65,12 +58,17 @@ def rag_mode():
                     st.write(f"⏳ {step}..")
                     time.sleep(0.75)
 
-            st.session_state.rag_chain, _ = rag_pipe(
-                st.session_state.uploaded, st.session_state.rag_id
-            )
+                try:
+                    st.session_state.rag_chain, _ = rag_pipe(
+                        st.session_state.uploaded, st.session_state.rag_id
+                    )
+                    st.success("Documents processed! You can ask questions now.")
+                except Exception as e:
+                    st.error(f"An error occurred during RAG pipeline setup: {e}")
+                finally:
+                    st.session_state.processing = False
 
-            st.success("Documents processed! You can ask questions now.")
-            st.session_state.processing = False
+
 
     if st.session_state.uploaded:
         st.subheader("Uploaded Documents")
@@ -96,16 +94,18 @@ def rag_mode():
         with st.chat_message("user"):
             st.markdown(question)
 
-        cached = get_cached_answer(question, st.session_state.rag_id)
-        if cached:
-            answer = cached
-        else:
-            response = st.session_state.rag_chain({
-                "question": question,
-                "chat_history": st.session_state.rag_history
-            })
-            answer = response['answer']
-            cache_answer(question, answer, st.session_state.rag_id)
+        answer = get_cached_answer(question, st.session_state.rag_id)
+        
+        if not answer:
+            try:
+                response = st.session_state.rag_chain({
+                    "question": question,
+                    "chat_history": st.session_state.rag_history
+                })
+                answer = response['answer']
+                cache_answer(question, answer, st.session_state.rag_id)
+            except Exception as e:
+                answer = f"Sorry, an error occurred while generating the response: {e}"
 
         with st.chat_message("assistant"):
             st.markdown(answer)
@@ -128,19 +128,28 @@ def direct_mode():
             st.markdown(question)
 
         if not st.session_state.direct_chain:
-            st.session_state.direct_chain = direct_chat_llm()
+            try:
+                st.session_state.direct_chain = direct_chat_llm()
+            except Exception as e:
+                st.error(f"Error initializing direct chat LLM: {e}")
+                st.session_state.direct_history.pop()
+                return
 
         cached = get_cached_answer(question, st.session_state.direct_id)
+
         if cached:
             answer = cached
         else:
-            response = st.session_state.direct_chain.invoke({
-                "input": question,
-                "chat_history": st.session_state.direct_history,
-                "temperature": st.session_state.temperature
-            })
-            answer = response.content
-            cache_answer(question, answer, st.session_state.direct_id)
+            try:
+                response = st.session_state.direct_chain.invoke({
+                    "input": question,
+                    "chat_history": st.session_state.direct_history,
+                    "temperature": st.session_state.temperature
+                })
+                answer = response.content
+                cache_answer(question, answer, st.session_state.direct_id)
+            except Exception as e:
+                answer = f"Sorry, an error occurred while generating the response: {e}"
 
         with st.chat_message("assistant"):
             st.markdown(answer)

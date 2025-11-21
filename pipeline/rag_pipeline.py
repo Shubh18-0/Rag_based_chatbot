@@ -7,7 +7,6 @@ from pipeline.llm_load import llm
 from utils.load_docs import load_user_documents
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_pinecone import PineconeVectorStore
-from langchain_pinecone import Pinecone
 from pinecone_text.sparse import BM25Encoder
 from pinecone import Pinecone as PineconeClient
 
@@ -15,6 +14,7 @@ def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
     if session_id is None:
         session_id = generate_unique_sessionID()
     namespace = session_id
+    
 
     pc_api_key = os.environ.get("PINECONE_API_KEY")
     if not pc_api_key:
@@ -35,7 +35,7 @@ def rag_pipe(sources, session_id=None, index_name="project-2-pinecone"):
 
     embeddings_model = create_embeddings()
 
-    vector_store = Pinecone.from_documents(
+    vector_store = PineconeVectorStore.from_documents(
         documents=splitted_documents,
         embedding=embeddings_model,
         index_name=index_name,

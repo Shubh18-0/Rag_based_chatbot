@@ -1,8 +1,8 @@
-from pinecone import Pinecone, ServerlessSpec
+from pinecone import Pinecone as PineconeClient, ServerlessSpec
 from config.env_variables import Pinecone_api_key
 
 PINECONE_REGION = "us-east1"
-pc = Pinecone(api_key=Pinecone_api_key)
+pc = PineconeClient(api_key=Pinecone_api_key)
 
 INDEX_NAME = "project-2-pinecone"
 DIMENSION = 384
@@ -10,7 +10,7 @@ DIMENSION = 384
 def vector_store_index():
     existing_indexes = pc.list_indexes()
 
-    if INDEX_NAME not in existing_indexes:
+    if INDEX_NAME not in existing_indexes.names:
         pc.create_index(
             name=INDEX_NAME,
             dimension=DIMENSION,
