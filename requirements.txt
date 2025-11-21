@@ -26,4 +26,5 @@ typing-extensions==4.15.0
 langchain-groq
 langchain-pinecone
 pinecone-text
+langchain-huggingface
 
