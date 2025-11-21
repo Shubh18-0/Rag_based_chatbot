@@ -1,7 +1,5 @@
 streamlit==1.30.0
-markdown-it-py==4.0.0
-mdurl==0.1.2
-pygments==2.19.2
+rich==13.3.4
 nltk==3.8.1
 transformers==4.44.0
 sentence-transformers==2.2.2
@@ -9,5 +7,6 @@ pypdf==3.16.0
 python-docx==1.1.2
 requests==2.31.0
 beautifulsoup4==4.12.2
-langchain>=0.3.0,<1.0.0
-redis==5.0.0
+langchain<1.0.0,>=0.3.0
+langchain-huggingface==0.0.8
+redis==5.2.0
