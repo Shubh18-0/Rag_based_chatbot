@@ -23,3 +23,5 @@ torchvision==0.17.0
 triton==2.2.0
 orjson==3.11.4
 typing-extensions==4.15.0
+langchain-groq
+
